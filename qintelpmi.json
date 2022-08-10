@@ -1,0 +1,156 @@
+{
+    "appid": "4939f317-43de-420c-9155-2128c8052444",
+    "name": "Qintel PMI",
+    "description": "Qintel’s Patch Management Intelligence (PMI) product simplifies the vulnerability management process by providing vital context around reported Common Vulnerabilities and Exposures. With this app, users can query PMI to surface CVEs that are known by Qintel to be leveraged by adversaries of all stripes.",
+    "type": "network security",
+    "product_vendor": "Qintel, LLC",
+    "logo": "qintelpmi.png",
+    "logo_dark": "qintelpmi_dark.png",
+    "product_name": "PMI",
+    "python_version": "3",
+    "product_version_regex": ".*",
+    "publisher": "Qintel, LLC",
+    "license": "Copyright (c) Qintel, LLC, 2022",
+    "app_version": "1.0.0",
+    "utctime_updated": "2022-07-26T19:40:47.318453Z",
+    "package_name": "phantom_qintelpmi",
+    "main_module": "qintelpmi_connector.py",
+    "min_phantom_version": "5.2.1.78411",
+    "app_wizard_version": "1.0.0",
+    "configuration": {
+        "client_id": {
+            "description": "API Token - Client ID",
+            "data_type": "string",
+            "required": true,
+            "value_list": [],
+            "default": "",
+            "order": 0,
+            "name": "Client ID",
+            "id": 0
+        },
+        "client_secret": {
+            "description": "API Token - Client Secret",
+            "data_type": "password",
+            "required": true,
+            "order": 1,
+            "name": "Client Secret",
+            "id": 1
+        },
+        "remote": {
+            "description": "PMI API URL (Optional)",
+            "data_type": "string",
+            "required": false,
+            "value_list": [],
+            "default": "https://api.pmi.qintel.com",
+            "order": 2,
+            "name": "remote",
+            "id": 2
+        }
+    },
+    "actions": [
+        {
+            "action": "test connectivity",
+            "identifier": "test_connectivity",
+            "description": "Validate the asset configuration for connectivity using supplied configuration",
+            "verbose": "",
+            "type": "test",
+            "read_only": true,
+            "parameters": {},
+            "output": [],
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "get cve intel",
+            "identifier": "pmi_get_cve_intel",
+            "description": "Fetch CVE intel observations from PMI",
+            "type": "investigate",
+            "read_only": true,
+            "parameters": {
+                "cve": {
+                    "description": "CVE to query",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [
+                        "cve"
+                    ],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0,
+                    "name": "cve"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.parameter.cve",
+                    "data_type": "string",
+                    "contains": [
+                        "cve"
+                    ],
+                    "column_name": "cve"
+                },
+                {
+                    "data_path": "action_result.summary.observation_count",
+                    "data_type": "string",
+                    "column_name": "Observation Count"
+                },
+                {
+                    "data_path": "action_result.summary.last_observed",
+                    "data_type": "numeric",
+                    "column_name": "Last Observed"
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status"
+                },
+                {
+                    "column_name": "CVSS",
+                    "data_path": "action_result.data.cvss",
+                    "data_type": "numeric"
+                },
+                {
+                    "column_name": "Affected System",
+                    "data_path": "action_result.data.affected_system",
+                    "data_type": "string"
+                },
+                {
+                    "column_name": "Affected Versions",
+                    "data_path": "action_result.data.affected_versions",
+                    "data_type": "string"
+                },
+                {
+                    "column_name": "Observation Date",
+                    "data_path": "action_result.data.*.observations.*.observation_date",
+                    "data_type": "string"
+                },
+                {
+                    "column_name": "Actor Type",
+                    "data_path": "action_result.data.*.observations.*.actor_type",
+                    "data_type": "string"
+                },
+                {
+                    "column_name": "Actor",
+                    "data_path": "action_result.data.*.observations.*.actor",
+                    "data_type": "string"
+                },
+                {
+                    "column_name": "Exploit Type",
+                    "data_path": "action_result.data.*.observations.*.exploit_type",
+                    "data_type": "string"
+                },
+                {
+                    "column_name": "Notes",
+                    "data_path": "action_result.data.*.observations.*.notes",
+                    "data_type": "string"
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "title": "Vuln Observations",
+                "view": "cve_results.display_pmi_results"
+            },
+            "versions": "EQ(*)"
+        }
+    ]
+}
