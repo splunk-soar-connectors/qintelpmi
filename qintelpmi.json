@@ -4,8 +4,8 @@
     "description": "Qintel’s Patch Management Intelligence (PMI) product simplifies the vulnerability management process by providing vital context around reported Common Vulnerabilities and Exposures. With this app, users can query PMI to surface CVEs that are known by Qintel to be leveraged by adversaries of all stripes.",
     "type": "network security",
     "product_vendor": "Qintel, LLC",
-    "logo": "qintelpmi.png",
-    "logo_dark": "qintelpmi_dark.png",
+    "logo": "qintelpmi.svg",
+    "logo_dark": "qintelpmi_dark.svg",
     "product_name": "PMI",
     "python_version": "3",
     "product_version_regex": ".*",
@@ -15,7 +15,7 @@
     "utctime_updated": "2022-07-26T19:40:47.318453Z",
     "package_name": "phantom_qintelpmi",
     "main_module": "qintelpmi_connector.py",
-    "min_phantom_version": "5.2.1.78411",
+    "min_phantom_version": "5.3.3.92213",
     "app_wizard_version": "1.0.0",
     "configuration": {
         "client_id": {
@@ -51,7 +51,7 @@
         {
             "action": "test connectivity",
             "identifier": "test_connectivity",
-            "description": "Validate the asset configuration for connectivity using supplied configuration",
+            "description": "Validate the asset configuration for connectivity using supplied configuration.",
             "verbose": "",
             "type": "test",
             "read_only": true,
@@ -62,7 +62,7 @@
         {
             "action": "get cve intel",
             "identifier": "pmi_get_cve_intel",
-            "description": "Fetch CVE intel observations from PMI",
+            "description": "Fetch CVE intel observations from PMI.",
             "type": "investigate",
             "read_only": true,
             "parameters": {
@@ -143,12 +143,30 @@
                     "column_name": "Notes",
                     "data_path": "action_result.data.*.observations.*.notes",
                     "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
                 }
             ],
             "render": {
                 "type": "custom",
                 "title": "Vuln Observations",
-                "view": "cve_results.display_pmi_results"
+                "view": "qintelpmi_results.display_pmi_results"
             },
             "versions": "EQ(*)"
         }
