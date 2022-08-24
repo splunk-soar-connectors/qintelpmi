@@ -1,7 +1,7 @@
 {
   "appid": "4939f317-43de-420c-9155-2128c8052444",
   "name": "Qintel PMI",
-  "description": "Qintel’s Patch Management Intelligence (PMI) product simplifies the vulnerability management process by providing vital context around reported Common Vulnerabilities and Exposures. With this app, users can query PMI to surface CVEs that are known by Qintel to be leveraged by adversaries of all stripes",
+  "description": "Qintel\u2019s Patch Management Intelligence (PMI) product simplifies the vulnerability management process by providing vital context around reported Common Vulnerabilities and Exposures. With this app, users can query PMI to surface CVEs that are known by Qintel to be leveraged by adversaries of all stripes",
   "type": "network security",
   "product_vendor": "Qintel, LLC",
   "logo": "logo_qintelpmi.svg",
@@ -12,7 +12,7 @@
   "product_version_regex": ".*",
   "publisher": "Qintel, LLC",
   "license": "Copyright (c) Qintel, LLC, 2022",
-  "app_version": "1.0.0",
+  "app_version": "1.0.1",
   "utctime_updated": "2022-07-26T19:40:47.318453Z",
   "package_name": "phantom_qintelpmi",
   "main_module": "qintelpmi_connector.py",
