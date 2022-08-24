@@ -16,7 +16,7 @@
   "utctime_updated": "2022-07-26T19:40:47.318453Z",
   "package_name": "phantom_qintelpmi",
   "main_module": "qintelpmi_connector.py",
-  "min_phantom_version": "5.3.3.92213",
+  "min_phantom_version": "5.3.0",
   "app_wizard_version": "1.0.0",
   "configuration": {
     "client_id": {
