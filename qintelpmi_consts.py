@@ -1,6 +1,6 @@
 # File: qintelpmi_consts.py
 #
-# Copyright (c) Qintel, LLC, 2022
+# Copyright (c) Qintel, LLC, 2022-2025
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,15 +14,15 @@
 # and limitations under the License.
 #
 
-VERSION = '1.0.0'
-USER_AGENT = 'Splunk-SOAR-'
+VERSION = "1.0.0"
+USER_AGENT = "Splunk-SOAR-"
 USER_AGENT += VERSION
 
-DATE_FORMAT = '%Y-%m-%d %I:%M:%S'
+DATE_FORMAT = "%Y-%m-%d %I:%M:%S"
 
-CVE_URL = 'https://pmi.qintel.com/overview/cves/{cve}/detail'
+CVE_URL = "https://pmi.qintel.com/overview/cves/{cve}/detail"
 
 # Messages
 
 ERR_TEST_CONN = "Test Connectivity Failed {err}"
-ERR_PROCESS_RV = "Error occurred while processing the response from server {err}"  # noqa
+ERR_PROCESS_RV = "Error occurred while processing the response from server {err}"
